@@ -19,6 +19,14 @@
                     placeholder="What needs to be done?"
                     @keyup.enter="addTodo"
                 />
+                <div class="todo-left"
+                    v-show="todos.length"
+                >
+                    <span class="count">
+                        <strong>{{ remaining }}</strong>
+                        {{ remaining | pluralize('item') }} left
+                    </span>
+                </div>
             </footer>
         </section>
 
@@ -51,6 +59,9 @@
             },
             filteredTodos () {
                 return filters[this.visibility](this.todos)
+            },
+            remaining () {
+                return this.todos.filter(todo => ! todo.completed).length
             }
         },
         methods: {
@@ -63,6 +74,9 @@
 
                 e.target.value = ''
             }
+        },
+        filters: {
+            pluralize: (n, w) => n === 1 ? w : (w + 's')
         }
     }
 </script>
