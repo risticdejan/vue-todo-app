@@ -18,5 +18,8 @@ export const mutations = {
     },
     [types.TOGGLE_TODO] (state, { todo }) {
         todo.completed = !todo.completed
+    },
+    [types.CLEAR_COMPLETED] (state) {
+        state.todos = state.todos.filter(todo => !todo.completed)
     }
 };

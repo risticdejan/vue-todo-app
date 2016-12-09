@@ -26,6 +26,12 @@
                         <strong>{{ remaining }}</strong>
                         {{ remaining | pluralize('item') }} left
                     </span>
+                    <span class="clear-completed"
+                        v-show="todos.length > remaining"
+                        @click="clearCompleted"
+                    >
+                        clear completed
+                    </span>
                 </div>
             </footer>
         </section>
@@ -73,7 +79,10 @@
                 }
 
                 e.target.value = ''
-            }
+            },
+            ...mapMutations([
+                'clearCompleted'
+            ])
         },
         filters: {
             pluralize: (n, w) => n === 1 ? w : (w + 's')
