@@ -14,6 +14,20 @@
                 </transition-group>
             </section>
             <footer>
+                <div class="todo-nav"
+                    v-show="todos.length"
+                >
+                    <ul class="filters">
+                        <li v-for="(val, key) in filters">
+                            <a href="javascript:void(0);"
+                                :class="{ selected: visibility === key }"
+                                @click="visibility = key"
+                            >
+                                {{ key | capitalize }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <input class="new-todo"
                     autofocus
                     placeholder="What needs to be done?"
@@ -85,7 +99,8 @@
             ])
         },
         filters: {
-            pluralize: (n, w) => n === 1 ? w : (w + 's')
+            pluralize: (n, w) => n === 1 ? w : (w + 's'),
+            capitalize: s => s.charAt(0).toUpperCase() + s.slice(1)
         }
     }
 </script>
@@ -234,7 +249,7 @@
 
     .todo-nav,
     .todo-left {
-        padding: .5em 1em;
+        padding: .5em 1em .5em 4em;
         background: inherit;
         border-bottom: 1px solid #e9e9e9;
         border-top: 1px solid #e9e9e9;
