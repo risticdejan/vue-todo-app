@@ -1,6 +1,6 @@
 # todo app
 
-> This is a todo app. In developing of the app, It was used Vue.js and Local storage..
+> This is a todo app. In development of the app, It was used Vue.js and Local storage..
 
 ## Build Setup
 
