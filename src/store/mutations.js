@@ -21,5 +21,8 @@ export const mutations = {
     },
     [types.CLEAR_COMPLETED] (state) {
         state.todos = state.todos.filter(todo => !todo.completed)
+    },
+    [types.EDIT_TODO] (state, { todo, value }) {
+        todo.body = value
     }
 };
